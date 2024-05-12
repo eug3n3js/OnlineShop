@@ -1,0 +1,20 @@
+image: gradle:latest
+
+stages:
+  - build
+  - test
+
+variables:
+  GRADLE_OPTS: "-Dorg.gradle.daemon=false"
+
+build:
+  stage: build
+  script:
+    - chmod +x gradlew
+    - ./gradlew assemble
+
+test:
+  stage: test
+  script:
+    - chmod +x gradlew
+    - ./gradlew test

@@ -1,0 +1,18 @@
+.shopList{
+    position: relative;
+    top: 100px;
+    align-items: center;
+}
+
+.shopCard{
+    border: 1px solid #ccc;
+    width: 200%;
+    padding: 10px;
+    margin-bottom: 10px; 
+  }
+  
+.shopColumn{
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }

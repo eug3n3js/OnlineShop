@@ -1,0 +1,19 @@
+.offerList{
+    position: relative;
+    top: 100px;
+    align-items: center;
+}
+
+.offerCard{
+    border: 1px solid #ccc;
+    width: 200%;
+    padding: 10px; 
+    margin-bottom: 10px; 
+  }
+
+.offerColumn{
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  

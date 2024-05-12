@@ -1,0 +1,15 @@
+DROP SCHEMA IF EXISTS public CASCADE;
+CREATE SCHEMA public;
+create sequence if not exists availability_seq start with 1 increment by 50 minvalue 0 no maxvalue no cycle;
+create sequence if not exists custom_seq start with 1 increment by 50;
+create sequence if not exists offline_shop_seq start with 1 increment by 50 minvalue 0 no maxvalue no cycle;
+create sequence if not exists product_seq start with 1 increment by 50 minvalue 0 no maxvalue no cycle;
+create table if not exists availability (price float4, quantity integer, offer_id bigint not null, product_offer bigint, shop_offer bigint, primary key (offer_id));
+create table if not exists custom (is_completed boolean, custom_id bigint not null, time timestamp(6), primary key (custom_id));
+create table if not exists offline_shop (shop_id bigint not null, address varchar(255), shop_name varchar(255), primary key (shop_id));
+create table if not exists order_item (custom_id bigint not null, offer_id bigint not null);
+create table if not exists product (product_id bigint not null, description varchar(255), product_name varchar(255), primary key (product_id));
+alter table if exists availability add constraint FKc4j3jypbi5206e8si88kqu0jv foreign key (shop_offer) references offline_shop;
+alter table if exists availability add constraint FKdtdd3j932734lwyes6lw7wh0s foreign key (product_offer) references product;
+alter table if exists order_item add constraint FK9qcpnedq0smqi7kf1rxl2osv5 foreign key (offer_id) references custom;
+alter table if exists order_item add constraint FKrqcjcvvyi6wxlcvk64p8ds98l foreign key (custom_id) references availability;
